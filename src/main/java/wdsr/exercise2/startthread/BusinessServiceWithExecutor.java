@@ -1,5 +1,8 @@
 package wdsr.exercise2.startthread;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class BusinessServiceWithExecutor {
 	private NumericHelper helper;
 	
@@ -16,7 +19,12 @@ public class BusinessServiceWithExecutor {
 	public void computeFibonacci(int n, FibonacciCallback callback) {
 		// TODO Task: execute the logic below using java.util.concurrent.ExecutorService
 		// The ExecutorService should be declared as a field, not a local variable.
-		long value = helper.findFibonacciValue(n);
-		callback.fibonacciComputed(value);
+		ExecutorService task = Executors.newFixedThreadPool(2); 
+		
+		task.execute(() -> {
+			long value = helper.findFibonacciValue(n);
+			callback.fibonacciComputed(value);
+		});
+		task.shutdown();
 	}
 }
