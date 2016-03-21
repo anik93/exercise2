@@ -11,14 +11,22 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class CountingFacadeWithAtomic implements CountingFacade {
 	private final BusinessService businessService;
-	private static AtomicInteger invocationCounter = new AtomicInteger();
+	private AtomicInteger invocationCounter = new AtomicInteger(0);
 	private int counter = 0; 
+	
 	public CountingFacadeWithAtomic(BusinessService businessService) {
 		this.businessService = businessService;
 	}
 		
 	public void countAndInvoke() {
-		invocationCounter.getAndIncrement();
+		//ExecutorService executor = Executors.newFixedThreadPool(2);
+		//Runnable task = () -> 
+			//invocationCounter.getAndUpdate(i -> i++);
+		//counter = invocationCounter.getAndIncrement();
+		
+		invocationCounter.incrementAndGet();
+		//executor.submit(task);
+		//executor.shutdown();
 		businessService.executeAction();
 	}
 	
