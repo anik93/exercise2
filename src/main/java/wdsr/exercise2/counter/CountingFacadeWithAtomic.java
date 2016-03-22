@@ -22,6 +22,5 @@ public class CountingFacadeWithAtomic implements CountingFacade {
 	
 	public int getCount() {
 		return invocationCounter.get();
-		//return counter;
 	}
 }
