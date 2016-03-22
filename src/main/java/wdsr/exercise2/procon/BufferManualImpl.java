@@ -9,7 +9,7 @@ import java.util.Queue;
  */
 public class BufferManualImpl implements Buffer {
 	
-	Queue<Order> listOfOrder = new ArrayDeque<>(); 
+	Queue<Order> listOfOrder = new ArrayDeque<>(100000); 
 	
 	public synchronized void submitOrder(Order order) throws InterruptedException {
 		listOfOrder.add(order);
