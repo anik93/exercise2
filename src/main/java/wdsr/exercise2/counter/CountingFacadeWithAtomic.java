@@ -1,7 +1,5 @@
 package wdsr.exercise2.counter;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -12,21 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CountingFacadeWithAtomic implements CountingFacade {
 	private final BusinessService businessService;
 	private AtomicInteger invocationCounter = new AtomicInteger(0);
-	private int counter = 0; 
 	
 	public CountingFacadeWithAtomic(BusinessService businessService) {
 		this.businessService = businessService;
 	}
 		
 	public void countAndInvoke() {
-		//ExecutorService executor = Executors.newFixedThreadPool(2);
-		//Runnable task = () -> 
-			//invocationCounter.getAndUpdate(i -> i++);
-		//counter = invocationCounter.getAndIncrement();
-		
 		invocationCounter.incrementAndGet();
-		//executor.submit(task);
-		//executor.shutdown();
 		businessService.executeAction();
 	}
 	
