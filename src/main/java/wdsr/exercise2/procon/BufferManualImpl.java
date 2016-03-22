@@ -32,11 +32,6 @@ public class BufferManualImpl implements Buffer {
 	}
 	
 	public Order consumeNextOrder() throws InterruptedException {
-		/*if(listOfOrder.isEmpty()){
-			return null;
-		}else{
-			return listOfOrder.remove(0);
-		}*/
 		lock.lock();
 		try{
 			while(listOfOrder.isEmpty()){
