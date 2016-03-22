@@ -8,7 +8,7 @@ package wdsr.exercise2.counter;
 public class SimpleCountingFacade implements CountingFacade {
 	private final BusinessService businessService;
 	
-	private int invocationCounter;
+	private volatile int invocationCounter;
 	
 	public SimpleCountingFacade(BusinessService businessService) {
 		this.businessService = businessService;
