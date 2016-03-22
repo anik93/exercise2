@@ -7,13 +7,13 @@ import java.util.concurrent.BlockingQueue;
  * Task: implement Exchange interface using one of *Queue classes from java.util.concurrent package.
  */
 public class BufferQueueImpl implements Buffer {
-	BlockingQueue<Object> queue = new ArrayBlockingQueue<>(100000);
+	BlockingQueue<Order> queue = new ArrayBlockingQueue<>(100000);
 	
 	public void submitOrder(Order order) throws InterruptedException {
 		queue.put(order);
 	}
 	
 	public Order consumeNextOrder() throws InterruptedException {
-		return (Order) queue.take();
+		return queue.take();
 	}
 }
